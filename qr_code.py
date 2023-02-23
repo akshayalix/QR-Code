@@ -8,6 +8,11 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/', methods=['POST'])
+
+def generateQR():
+    data = request.form.get('link')
+    img = qrcode.make(data)
 
 if __name__ == '__main__':
     app.run(debug=True) 
